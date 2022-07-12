@@ -2,15 +2,13 @@ require './lib/ship'
 require './lib/cell'
 
 RSpec.describe Cell do
-    before :each do
-        @cell = Cell.new("B4")
-        @cruiser = Ship.new("Cruiser", 3)
-    end
-
-    describe 'Iteration 1' do
-        it 'inititalizes with a cell, coordinate, nil ship, and is empty' do
+    describe 'Initializing' do
+        before :each do
             cell = Cell.new("B4")
+            cruiser = Ship.new("Cruiser", 3)
+        end
 
+        it 'inititalizes with a cell, coordinate, nil ship, and is empty' do
             expect(cell).to be_a(Cell)
             expect(cell.coordinate).to eq("B4")
             expect(cell.ship).to eq(nil)
@@ -18,9 +16,7 @@ RSpec.describe Cell do
         end
 
         it 'can place a ship and show cell status' do
-            cell = Cell.new("B4")
-            cruiser = Ship.new("Cruiser", 3)
-            cell.place_ship(cruiser)
+            cell.place_ship(cruiser)  
 
             expect(cell.ship).to eq(cruiser)
             expect(cell.empty?).to eq(false)
@@ -28,14 +24,15 @@ RSpec.describe Cell do
         end
 
         it 'can display info when fired upon' do
-            cell = Cell.new("B4")
-            cruiser = Ship.new("Cruiser", 3)
             cell.place_ship(cruiser)
             cell.fire_upon
-
+            
             expect(cell.ship.health).to eq(2)
             expect(cell.fired_upon?).to eq(true)
         end
+    end
+
+    describe 'Rendering method' do
 
         it 'can initially render' do
             cell_1 = Cell.new("B4")
@@ -79,5 +76,4 @@ RSpec.describe Cell do
             expect(cell_2.render).to eq("X")
         end
     end
-
 end
