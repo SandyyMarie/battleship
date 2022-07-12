@@ -22,8 +22,39 @@ class Board
                 }
     end
 
-    def valid_coordinate?(coord)
+    def valid_coordinate?(coord) #needs test
         @cells.any? {|cell| cell.include?(coord)}
+    end
+
+    def is_occupied?(coordinates)
+        #  coordinates.one? {|coord| !@cells[coord].empty?}
+        status = false
+        # require 'pry' ; binding.pry
+        coordinates.each do |coord|
+            if !@cells[coord].empty?
+                status = true
+            end
+        end
+
+        status
+    end
+
+    def horizontal_check(coordinates)  #needs test
+        nums = coordinates.map {|coord| coord[1].to_i}
+        letters = coordinates.map  {|coord| coord[0]}
+        (letters.uniq.count == 1 && (nums.min..nums.max).to_a == nums)
+    end
+
+    def vertical_check(coordinates)  #needs test
+        nums = coordinates.map {|coord| coord[1].to_i}
+        letters = coordinates.map  {|coord| coord[0]}
+        (letters.min..letters.max).to_a == letters && nums.uniq.count == 1
+    end
+
+    def diagonal_check(coordinates)  #needs test
+        nums = coordinates.map {|coord| coord[1].to_i}
+        letters = coordinates.map  {|coord| coord[0]}
+        (letters.min..letters.max).to_a == letters && (nums.min..nums.max).to_a == nums
     end
 
     def valid_placement?(ship, coord)
