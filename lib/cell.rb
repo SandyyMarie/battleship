@@ -1,39 +1,37 @@
 class Cell
-    attr_reader :coordinate, :ship, :fired_upon
 
-    def initialize(coordinate) 
+  attr_reader :coordinate, :ship, :fired_upon
+
+  def initialize(coordinate) 
     @coordinate = coordinate
     @ship = ship
     @fired_upon = false
-end
+  end
 
-def empty?
+  def empty?
     @ship == nil
-end
+  end
 
-def place_ship(ship)
+  def place_ship(ship)
     @ship = ship
-end
+  end
 
-def fired_upon?
+  def fired_upon?
     @fired_upon
-end
+  end
 
-
-
-def fire_upon
+  def fire_upon
     @fired_upon = true
     if !empty?
         @ship.hit
     end
-end
+  end
 
-
-def fired_upon?
-@fired_upon
-end
-       
-def render(reveal = false)
+  def fired_upon?
+    @fired_upon
+  end
+        
+  def render(reveal = false)
     if reveal == true && !empty? && @fired_upon == false
       "S"
     elsif !empty? && @fired_upon == false
@@ -48,6 +46,5 @@ def render(reveal = false)
       "."
     end
   end
-
-
+  
 end

@@ -5,8 +5,8 @@ require './lib/cell'
 RSpec.describe Cell do
     describe 'Initializing' do
   
-            cell = Cell.new("B4")
-            cruiser = Ship.new("Cruiser", 3)
+        cell = Cell.new("B4")
+        cruiser = Ship.new("Cruiser", 3)
         
 
         it 'inititalizes with a cell, coordinate, nil ship, and is empty' do
