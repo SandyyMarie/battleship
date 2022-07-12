@@ -4,10 +4,10 @@ require './lib/cell'
 
 RSpec.describe Cell do
     describe 'Initializing' do
-        before :each do
+  
             cell = Cell.new("B4")
             cruiser = Ship.new("Cruiser", 3)
-        end
+        
 
         it 'inititalizes with a cell, coordinate, nil ship, and is empty' do
             expect(cell).to be_a(Cell)
