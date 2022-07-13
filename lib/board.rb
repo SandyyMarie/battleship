@@ -49,6 +49,7 @@ class Board
         nums = coordinates.map {|coord| coord[1].to_i}
         letters = coordinates.map  {|coord| coord[0]}
         (letters.min..letters.max).to_a == letters && nums.uniq.count == 1
+      
     end
 
     def diagonal_check(coordinates)  #needs test
@@ -74,4 +75,19 @@ class Board
 
         pass
      end
+
+
+    def place(ship_type, placement_array)
+        valid = valid_placement?(ship_type, placement_array)
+        if valid
+        i = 0
+        @cells.each do |cell|
+        if cell.last.coordinate == placement_array[i]
+          @cells[placement_array[i]].place_ship(ship_type)
+          i += 1
+            end
+        end
+        end
+    end
+
 end
