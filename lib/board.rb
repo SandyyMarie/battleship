@@ -22,7 +22,7 @@ class Board
                 }
     end
 
-    def valid_coordinate?(coord) #needs test
+    def valid_coordinate?(coord)
         @cells.any? {|cell| cell.include?(coord)}
     end
 
@@ -39,20 +39,20 @@ class Board
         status
     end
 
-    def horizontal_check(coordinates)  #needs test
+    def horizontal_check(coordinates)  
         nums = coordinates.map {|coord| coord[1].to_i}
         letters = coordinates.map  {|coord| coord[0]}
         (letters.uniq.count == 1 && (nums.min..nums.max).to_a == nums)
     end
 
-    def vertical_check(coordinates)  #needs test
+    def vertical_check(coordinates)  
         nums = coordinates.map {|coord| coord[1].to_i}
         letters = coordinates.map  {|coord| coord[0]}
         (letters.min..letters.max).to_a == letters && nums.uniq.count == 1
       
     end
 
-    def diagonal_check(coordinates)  #needs test
+    def diagonal_check(coordinates)  #might need a direct test
         nums = coordinates.map {|coord| coord[1].to_i}
         letters = coordinates.map  {|coord| coord[0]}
         (letters.min..letters.max).to_a == letters && (nums.min..nums.max).to_a == nums
@@ -80,14 +80,24 @@ class Board
     def place(ship_type, placement_array)
         valid = valid_placement?(ship_type, placement_array)
         if valid
-        i = 0
-        @cells.each do |cell|
-        if cell.last.coordinate == placement_array[i]
-          @cells[placement_array[i]].place_ship(ship_type)
-          i += 1
+            i = 0
+            @cells.each do |cell|
+                if cell.last.coordinate == placement_array[i]
+                @cells[placement_array[i]].place_ship(ship_type)
+                i += 1
+                end
             end
         end
-        end
+    end
+
+    def render(reveal = false)
+        output = "  1 2 3 4\n" +
+        "A #{@cells["A1"].render(reveal)} #{@cells["A2"].render(reveal)} #{@cells["A3"].render(reveal)} #{@cells["A4"].render(reveal)}\n" +
+        "B #{@cells["B1"].render(reveal)} #{@cells["B2"].render(reveal)} #{@cells["B3"].render(reveal)} #{@cells["B4"].render(reveal)}\n" +
+        "C #{@cells["C1"].render(reveal)} #{@cells["C2"].render(reveal)} #{@cells["C3"].render(reveal)} #{@cells["C4"].render(reveal)}\n" +
+        "D #{@cells["D1"].render(reveal)} #{@cells["D2"].render(reveal)} #{@cells["D3"].render(reveal)} #{@cells["D4"].render(reveal)}\n"
+
+        output
     end
 
 end
