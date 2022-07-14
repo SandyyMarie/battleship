@@ -35,6 +35,12 @@ RSpec.describe Board do
         expect(board.horizontal_check(["A1", "B1"])).to eq(false)
     end
 
+    it 'diagonal_check - check if given coordinates are diagonal' do
+        expect(board.diagonal_check(["A1", "A2"])).to eq(false)
+        epxect(board.diagonal_check(["A1", "B2"])).to eq(true)
+    end
+        
+
     it 'valid placement - checks if ship and cell are same length ' do 
         board = Board.new
         cruiser = Ship.new("Cruiser", 3)
