@@ -4,6 +4,11 @@ require './lib/board'
 require './lib/computer'
 require './lib/player'
 
-describe Player do
+RSpec.describe Player do
+    player = Player.new
+
+    it 'exists' do
+        expect(player).to be_a(Player)
+    end
 end
 

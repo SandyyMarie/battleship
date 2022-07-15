@@ -1,6 +1,6 @@
 require './lib/ship'
 
-describe Ship do
+RSpec.describe Ship do
   cruiser = Ship.new("Cruiser", 3)
 
   it 'exists and has a ship type and length' do

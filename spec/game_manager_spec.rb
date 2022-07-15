@@ -6,13 +6,13 @@ require './lib/player'
 require './game_manager'
 require './turn.rb'
 
-describe GameManager do
-game = GameManager.new
+RSpec.describe GameManager do
+  game = GameManager.new
 
 
-it 'exists' do
-    expect(game).to be_an_instance_of(GameManager)
-    expect(game.comp_board).to be_an_instance_of(Board)
+  it 'exists' do
+      expect(game).to be_an_instance_of(GameManager)
+      expect(game.comp_board).to be_an_instance_of(Board)
   end
 
   xit 'initilizes comp and player board' do
