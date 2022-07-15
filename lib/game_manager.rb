@@ -73,15 +73,14 @@ class GameManager
           puts "Yay You Win!"
           exit(true)
         end
-      end
+    end
 
-      def turn
-        _exit = false
-    
-        while !_exit
-          _exit = @turn.board_output
-        end
-        _exit
-      end
+    def turn
+    _exit = false
+    while !_exit
+        _exit = @turn.board_output
+    end
+    _exit
+    end
     
 end

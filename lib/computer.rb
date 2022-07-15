@@ -85,5 +85,5 @@ class Computer
       end
     end
       final_comp_coord.flatten
-    end
+  end
 end
