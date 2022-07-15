@@ -5,6 +5,7 @@ class Player
         @cruiser = Ship.new("Cruiser", 3)
         @submarine = Ship.new("Submarine", 2)
         @ships = [@cruiser, @submarine]
+        @player_ship_sunk = 0
     end
 
 end

@@ -5,7 +5,7 @@ class GameManager
     def initialize 
         @player = Player.new
         @computer = Computer.new
-        @turn = Turn.new(@computer.board, @player.board)
+        @turn = Turn.new(@computer, @player)
     end
 
 
@@ -67,9 +67,11 @@ class GameManager
 
     def end_game
         if @player.ships[0].sunk? == true && @player.ships[1].sunk? == true
+            #if @player.ships.sunk? == 2
           puts "Aww the Computer Wins!"
           exit(true)
         elsif @computer.ships[0].sunk? && @computer.ships[1].sunk?
+            #elsif @player.ships.sunk? == 2
           puts "Yay You Win!"
           exit(true)
         end

@@ -5,6 +5,7 @@ class Computer
         @cruiser = Ship.new("Cruiser", 3)
         @submarine = Ship.new("Submarine", 2)
         @ships = [@cruiser, @submarine]
+        @cpu_ship_sunk = 0
     end 
 
     def starting_board(reveal = false)
