@@ -74,7 +74,7 @@ class Turn
       end
 
 
-      if @player.ships_sunk == 2
+      if @player.ships_sunk == 2  #may not need, review later
         all_sunk = true
         puts "Aww the Computer Wins!"
         puts "Game Over!"
@@ -106,7 +106,7 @@ class Turn
         end
       end
 
-      if @computer.ships_sunk == 2
+      if @computer.ships_sunk == 2 #may not need, review later
         all_sunk = true
         puts "Yay You Win!"
         puts "Game Over!"
@@ -117,6 +117,18 @@ class Turn
 
 
   def board_output
+    if @computer.ships_sunk == 2
+        puts "Yay You Win!"
+        puts "Game Over!"
+        return true
+    end
+
+    if @player.ships_sunk == 2
+        puts "Aww the Computer Wins!"
+        puts "Game Over!"
+        return true
+    end
+
     puts "=============COMPUTER BOARD============="
     print @comp_board.render(true) #added true for debugging, remove before submitting
 

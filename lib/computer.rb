@@ -12,7 +12,19 @@ class Computer
         comp_sub_coords = comp_place(@submarine.name)
         comp_cru_coords = comp_place(@cruiser.name)
         @board.place(@submarine, comp_sub_coords)
-        @board.place(@cruiser, comp_cru_coords)
+        @board.place(@cruiser, comp_cru_coords) #breaks if theres an overlap and doesnt place ship
+
+        # cruiser_placed = false
+        # while !cruiser_placed
+        #   @board.cells.each do |cell|
+        #     if cell[1].ship == "Cruiser"
+        #       cruiser_placed = true
+        #     else
+        #       comp_cru_coords = comp_place(@cruiser.name)
+        #       @board.place(@cruiser, comp_cru_coords)
+        #     end
+        #   end
+        # end
         puts "I have laid out my ships on the grid."
     end
     
