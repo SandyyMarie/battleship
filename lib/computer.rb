@@ -1,10 +1,11 @@
 class Computer
-    attr_reader :board, :cruiser, :submarine, :ships
+    attr_reader :board, :cruiser, :submarine, :ships, :ships_sunk
     def initialize
         @board = Board.new
         @cruiser = Ship.new("Cruiser", 3)
         @submarine = Ship.new("Submarine", 2)
         @ships = [@cruiser, @submarine]
+        @ships_sunk = 0
     end 
 
     def starting_board(reveal = false)
