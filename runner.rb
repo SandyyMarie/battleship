@@ -17,6 +17,8 @@ def start
     while !game_over
       game_over = game.turn
     end
+    
+    start
   else
     game.welcome_message
   end

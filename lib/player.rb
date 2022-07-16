@@ -8,4 +8,7 @@ class Player
         @ships_sunk = 0
     end
 
+    def increase_ship_sunk
+        @ships_sunk += 1
+    end
 end

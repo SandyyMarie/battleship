@@ -12,11 +12,23 @@ class Computer
         comp_sub_coords = comp_place(@submarine.name)
         comp_cru_coords = comp_place(@cruiser.name)
         @board.place(@submarine, comp_sub_coords)
-        @board.place(@cruiser, comp_cru_coords)
+        @board.place(@cruiser, comp_cru_coords) #breaks if theres an overlap and doesnt place ship
+
+        # cruiser_placed = false
+        # while !cruiser_placed
+        #   @board.cells.each do |cell|
+        #     if cell[1].ship == "Cruiser"
+        #       cruiser_placed = true
+        #     else
+        #       comp_cru_coords = comp_place(@cruiser.name)
+        #       @board.place(@cruiser, comp_cru_coords)
+        #     end
+        #   end
+        # end
         puts "I have laid out my ships on the grid."
-      end
+    end
     
-      def comp_place(ship)
+    def comp_place(ship)
         rand_choice = Random.new
     
         h_sub_1 = ["A1", "A2"]
@@ -62,30 +74,33 @@ class Computer
         v_cru_6 = ["B3", "C3", "D3"]
         v_cru_7 = ["A4", "B4", "C4"]
         v_cru_8 = ["B4", "C4", "D4"]
-    
+      
     
         horizontal_sub = [h_sub_1, h_sub_2, h_sub_3, h_sub_4, h_sub_5, h_sub_6, h_sub_7, h_sub_8, h_sub_9, h_sub_10, h_sub_11, h_sub_12]
         vertical_sub = [v_sub_1, v_sub_2, v_sub_3, v_sub_4, v_sub_5, v_sub_6, v_sub_7, v_sub_8, v_sub_9, v_sub_10, v_sub_11, v_sub_12]
         horizontal_cru = [h_cru_1, h_cru_2, h_cru_3, h_cru_4, h_cru_5, h_cru_6, h_cru_7, h_cru_8]
         vertical_cru = [v_cru_1, v_cru_2, v_cru_3, v_cru_4, v_cru_5, v_cru_6, v_cru_7, v_cru_8]
         final_comp_coord = []
-    
+      
         if ship == "Submarine"
-          choice = rand_choice.rand(1..2)
-          if choice == 1
-            final_comp_coord << horizontal_sub.sample
-          elsif choice == 2
-            final_comp_coord << vertical_sub.sample
-          end
-    
+            choice = rand_choice.rand(1..2)
+            if choice == 1
+              final_comp_coord << horizontal_sub.sample
+            elsif choice == 2
+              final_comp_coord << vertical_sub.sample
+            end
         elsif ship == "Cruiser"
-          choice = rand_choice.rand(1..2)
-          if choice == 1
-            final_comp_coord << horizontal_cru.sample
-          elsif choice == 2
-            final_comp_coord << vertical_cru.sample
-          end
+            choice = rand_choice.rand(1..2)
+            if choice == 1
+              final_comp_coord << horizontal_cru.sample
+            elsif choice == 2
+              final_comp_coord << vertical_cru.sample
+            end
         end
         final_comp_coord.flatten
-      end
+    end
+      
+    def increase_ship_sunk
+      @ships_sunk += 1
+    end
 end

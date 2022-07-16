@@ -68,22 +68,22 @@ class Turn
       puts "Your shot on #{curr_cell.coordinate} was a #{play_status}"
       if curr_cell.ship != nil
         if curr_cell.ship.sunk?
-          require "pry"; binding.pry
-          @player.ships_sunk += 1
+          @computer.increase_ship_sunk
           puts "My #{curr_cell.ship.name} has been sunk"
         end
       end
 
 
-      if @player.ships_sunk == 2
+      if @player.ships_sunk == 2  #may not need, review later
         all_sunk = true
+        puts "Aww the Computer Wins!"
         puts "Game Over!"
       end
     end
     all_sunk
   end
 
-def cpu_feedback(comp_shot)
+  def cpu_feedback(comp_shot)
 
     cpu_status = ""
 
@@ -94,20 +94,21 @@ def cpu_feedback(comp_shot)
     elsif comp_shot.fired_upon? && comp_shot.empty?
       cpu_status = "miss"
     elsif comp_shot.ship.health == 0
-      @cpu_ship_sunk += 1
+      @computer.increase_ship_sunk
     end
 
     if all_sunk == false
       puts "My shot on #{comp_shot.coordinate} was a #{cpu_status}"
-    if comp_shot.ship != nil
-      if !comp_shot.empty? && comp_shot.ship.health == 0
-        @cpu_ship_sunk += 1
-        puts "Your #{comp_shot.ship.name} has been sunk"
+      if comp_shot.ship != nil
+        if !comp_shot.empty? && comp_shot.ship.health == 0
+          @player.increase_ship_sunk
+          puts "Your #{comp_shot.ship.name} has been sunk"
+        end
       end
-    end
 
-      if @cpu_ship_sunk == 2
+      if @computer.ships_sunk == 2 #may not need, review later
         all_sunk = true
+        puts "Yay You Win!"
         puts "Game Over!"
       end
     end
@@ -116,6 +117,18 @@ def cpu_feedback(comp_shot)
 
 
   def board_output
+    if @computer.ships_sunk == 2
+        puts "Yay You Win!"
+        puts "Game Over!"
+        return true
+    end
+
+    if @player.ships_sunk == 2
+        puts "Aww the Computer Wins!"
+        puts "Game Over!"
+        return true
+    end
+
     puts "=============COMPUTER BOARD============="
     print @comp_board.render(true) #added true for debugging, remove before submitting
 
