@@ -68,7 +68,7 @@ class Turn
       puts "Your shot on #{curr_cell.coordinate} was a #{play_status}"
       if curr_cell.ship != nil
         if curr_cell.ship.sunk?
-          @player.increase_ship_sunk
+          @computer.increase_ship_sunk
           puts "My #{curr_cell.ship.name} has been sunk"
         end
       end
@@ -76,6 +76,7 @@ class Turn
 
       if @player.ships_sunk == 2
         all_sunk = true
+        puts "Aww the Computer Wins!"
         puts "Game Over!"
       end
     end
@@ -100,13 +101,14 @@ class Turn
       puts "My shot on #{comp_shot.coordinate} was a #{cpu_status}"
       if comp_shot.ship != nil
         if !comp_shot.empty? && comp_shot.ship.health == 0
-          @computer.increase_ship_sunk
+          @player.increase_ship_sunk
           puts "Your #{comp_shot.ship.name} has been sunk"
         end
       end
 
-      if @cpu_ship_sunk == 2
+      if @computer.ships_sunk == 2
         all_sunk = true
+        puts "Yay You Win!"
         puts "Game Over!"
       end
     end
