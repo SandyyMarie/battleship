@@ -1,0 +1,17 @@
+Ongoing bugs we need to fix:
+
+1. End game takes an extra turn to trigger end of game info/end of loop, 
+need to have it execute either on same turn or before next turn
+
+2. When placing ships we need to have a verification for computer that it placed 2 ships
+(in case it cancels due to overlap)
+
+3. Need to fix endless loop when trying to make an incorrect/invalid shot 
+(i.e- a22 sends into perma invalid coordinate loop)
+
+4. Need to create loop for end of game to return to main menu, maybe call again?
+
+5. Picking an invalid coordinate when placing player ships will break code all together,
+need some type of parameters
+
+6. Need to add parameter so players/computer cant shoot the same shot twice
