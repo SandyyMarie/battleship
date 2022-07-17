@@ -5,12 +5,7 @@ need to have it execute either on same turn or before next turn
 **fixed, needs code clean up with potential redundencies
 
 2. When placing ships we need to have a verification for computer that it placed 2 ships
-(in case it cancels due to overlap)
+(in case it cancels due to overlap)***Stephen - soft fix
 
-3. Need to fix endless loop when trying to make an incorrect/invalid shot 
-(i.e- a22 sends into perma invalid coordinate loop)
 
-5. Picking an invalid coordinate when placing player ships will break code all together,
-need some type of parameters
-
-6. Need to add parameter so players/computer cant shoot the same shot twice
+6. Need to add parameter so players/computer cant shoot the same shot twice *if cell fired upon?

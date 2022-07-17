@@ -1,5 +1,5 @@
 class Turn 
-    attr_reader :computer, :player, :comp_board, :player_board
+    attr_reader :computer, :player, :comp_board, :player_board, :money_shot
 
   def initialize(computer, player)
     @computer = computer
@@ -7,6 +7,7 @@ class Turn
    
     @comp_board = @computer.board
     @player_board = @player.board
+    @money_shot = []
   end
 
   def cell_finder(comp_choice)
@@ -17,19 +18,23 @@ class Turn
     target_cell = cell_finder(given_coord)
     if @comp_board.valid_coordinate?(given_coord)
       target_cell.fire_upon
+      @money_shot = given_coord
     else
       valid = false
       while !valid do
         puts "Please enter a valid coordinate:"
-        given_coord = gets.chomp
-        if @comp_board.valid_coordinate?(given_coord)
-          valid = true
+        given_coord = gets.chomp.upcase 
+
+        valid = @comp_board.valid_coordinate?(given_coord)
+        if valid = true
           target_cell = cell_finder(given_coord)
+          # require "pry"; binding.pry
           target_cell.fire_upon
+          @money_shot = given_coord
         end
       end
     end
-    valid
+    # valid
   end
 
   def comp_shot
@@ -57,7 +62,7 @@ class Turn
     curr_cell = @comp_board.cells[player_shot]
     play_status = ""
     all_sunk = false
-
+# require "pry"; binding.pry
     if curr_cell.fired_upon? && !curr_cell.empty?
       play_status = "hit"
     else #if curr_cell.fired_upon? == false && curr_cell.empty? == true
@@ -141,7 +146,7 @@ class Turn
     player_shot(given_coord)
     comp_choice = comp_shot 
 
-    if cpu_feedback(comp_choice) == true || player_feedback(given_coord) == true
+    if cpu_feedback(comp_choice) == true || player_feedback(@money_shot) == true
       return true
     end
   end

@@ -13,15 +13,15 @@ class GameManager
         p "Welcome to BATTLESHIP"
         p "Enter p to play. Enter q to quit."
         input = gets.chomp
-        if input == "p"
-            return "p"
-        elsif input == "q"
-            puts "Now exiting game"
-            return "q"
-        else
-            puts "Invalid entry, please use p or q"
-            input = gets.chomp
-        end
+    if input == "p"
+        return "p"
+    elsif input == "q"
+        puts "Now exiting game"
+        return "q"
+    else
+        puts "Invalid entry, please use p or q"
+        input = gets.chomp
+    end
     end 
 
 
@@ -38,11 +38,11 @@ class GameManager
             print @player.board.render(true)         #print current player board with cruiser
         else #if not valid placement THIS LOOP RUNS FOREVER
             validity = false
-            while validity != true
-                puts "Those are invalid coordinates. Please try again:"
-                cru_placement_input = STDIN.gets.chomp.upcase.split
-                validity = @player.board.valid_placement?(@player.cruiser, cru_placement_input)
-            end
+        while validity != true
+            puts "Those are invalid coordinates. Please try again:"
+            cru_placement_input = STDIN.gets.chomp.upcase.split
+            validity = @player.board.valid_placement?(@player.cruiser, cru_placement_input)
+        end
             @player.board.place(@player.cruiser, cru_placement_input)
             print @player.board.render(true)
         end
@@ -54,23 +54,37 @@ class GameManager
             print @player.board.render(true)
         else
             validity = false
-            while validity != true
-                puts "Those are invalid coordinates. Please try again:"
-                sub_placement_input = STDIN.gets.chomp.upcase.split
-                validity = @player.board.valid_placement?(@player.submarine, sub_placement_input)
-            end
+        while validity != true
+            puts "Those are invalid coordinates. Please try again:"
+            sub_placement_input = STDIN.gets.chomp.upcase.split
+            validity = @player.board.valid_placement?(@player.submarine, sub_placement_input)
+        end
             @player.board.place(@player.submarine, sub_placement_input)
             print @player.board.render(true)
         end
     end
 
-    def turn
-        _exit = false
 
-        while !_exit
-            _exit = @turn.board_output
+    def end_game
+        if @player.ships[0].sunk? == true && @player.ships[1].sunk? == true
+            #if @player.ships.sunk? == 2
+          puts "Aww the Computer Wins!"
+          exit(true)
+        elsif @computer.ships[0].sunk? && @computer.ships[1].sunk?
+            #elsif @player.ships.sunk? == 2
+          puts "Yay You Win!"
+          exit(true)
         end
+      end
 
+      def turn
+        _exit = false
+    
+        while !_exit
+          _exit = @turn.board_output
+        end
         _exit
-    end
+      end
+    
 end
+

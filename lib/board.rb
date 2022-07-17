@@ -82,7 +82,7 @@ class Board
         if valid
             i = 0
             @cells.each do |cell|
-                if cell.last.coordinate == placement_array[i]
+                if cell.last.coordinate == placement_array[i] # stephen - do we need .last?
                 @cells[placement_array[i]].place_ship(ship_type)
                 i += 1
                 end
