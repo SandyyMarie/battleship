@@ -30,9 +30,5 @@ describe Ship do
     expect(cruiser.sunk?).to eq(true)
   end
 
-  it 'can render the board with ships, empty cells, fired upon cells, hits, misses' do
-  require 'pry'; binding.pry
 
-
-  end
 end

@@ -30,7 +30,7 @@ TESTS TO ADD
     - increase_ship_sunk x
 
 5. Ship.rb
-    - render
+    - render x (removed render from ship, it's in cell)
 
 6. Game_Manager.rb
     - welcome_message

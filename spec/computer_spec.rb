@@ -15,11 +15,13 @@ describe Computer do
         expect(computer.ships_sunk).to eq(0)
     end
 
-    # it 'computer can place a ship on random coordinates' do
-    #     computer = Computer.new
-    #     computer.comp_place("Cruiser")
+    it 'computer can place a ship on random coordinates' do
+        computer = Computer.new
 
-    #     expect
+        expect(computer.comp_place("Cruiser").count).to eq(3)
+        expect(computer.comp_place("Submarine").count).to eq(2)
+
+    end
 
     it 'can increase number of ships sunk' do
         computer = Computer.new
