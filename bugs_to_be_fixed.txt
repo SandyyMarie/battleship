@@ -21,13 +21,13 @@ TESTS TO ADD
 
 3. Computer.rb
     - initialize X
-    - starting_board?
-    - comp_place?
+    - starting_board ?
+    - comp_place ? 
     - increase_ship_sunk X
 
 4. Player.rb
-    - inititalize
-    - increase_ship_sunk
+    - inititalize x 
+    - increase_ship_sunk x
 
 5. Ship.rb
     - render
