@@ -12,21 +12,12 @@ class Computer
         comp_sub_coords = comp_place(@submarine.name)
         comp_cru_coords = comp_place(@cruiser.name)
         @board.place(@submarine, comp_sub_coords)
-        @board.place(@cruiser, comp_cru_coords) #breaks if theres an overlap and doesnt place ship
+        placed = @board.place(@cruiser, comp_cru_coords)
 
-        cruiser_check = []
-        until cruiser_check != [] do
-         
-            cruiser_check =  @board.cells.find do |cell| 
-              cell[1].ship == "Cruiser"
-            end
-            if cruiser_check != []
-              puts "I have laid out my ships on the grid."
-            else
-              comp_cru_coords = comp_place(@cruiser.name)
-              @board.place(@cruiser, comp_cru_coords)
-            end
-          end
+        while !placed
+            comp_cru_coords = comp_place(@cruiser.name)
+            placed = @board.place(@cruiser, comp_cru_coords)
+        end
     end
     
     def comp_place(ship)
