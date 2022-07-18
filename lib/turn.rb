@@ -16,10 +16,13 @@ class Turn
 
   def player_shot(given_coord) #move to player?
     target_cell = cell_finder(given_coord)
-    if @comp_board.valid_coordinate?(given_coord)
+    if @comp_board.valid_coordinate?(given_coord) && target_cell.fired_upon? == false
       target_cell.fire_upon
       @money_shot = given_coord
     else
+      if @comp_board.valid_coordinate?(given_coord) && target_cell.fired_upon? == true
+       puts "You already shot here."
+      end
       valid = false
       while !valid do
         puts "Please enter a valid coordinate:"
