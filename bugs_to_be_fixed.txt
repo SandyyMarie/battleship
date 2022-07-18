@@ -20,14 +20,11 @@ TESTS TO ADD
 2. Cell.rb
 
 3. Computer.rb
-    - initialize
     - starting_board
     - comp_place
-    - increase_ship_sunk
 
 4. Player.rb
-    - inititalize
-    - increase_ship_sunk
+
 
 5. Ship.rb
     - render
@@ -38,9 +35,8 @@ TESTS TO ADD
     - turn
 
 7. Turn.rb
-    - cell_finder
-    - player_shot
-    - comp_shot
-    - player_feedback
-    - cpu_feedback
-    - board_output
+
+    Refactor notes:
+
+    In turn.rb we can remove the comp_board 
+    and player_board variables alltogether by just calling computer.board and player.board
