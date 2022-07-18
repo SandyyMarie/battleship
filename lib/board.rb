@@ -88,6 +88,8 @@ class Board
                 end
             end
         end
+
+        return valid
     end
 
     def render(reveal = false)
