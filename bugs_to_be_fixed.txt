@@ -9,3 +9,38 @@ need to have it execute either on same turn or before next turn
 
 
 6. Need to add parameter so players/computer cant shoot the same shot twice *if cell fired upon?
+
+
+#**** FIXed
+
+TESTS TO ADD
+
+1. Board.rb
+
+2. Cell.rb
+
+3. Computer.rb
+    - initialize
+    - starting_board
+    - comp_place
+    - increase_ship_sunk
+
+4. Player.rb
+    - inititalize
+    - increase_ship_sunk
+
+5. Ship.rb
+    - render
+
+6. Game_Manager.rb
+    - welcome_message
+    - end_game
+    - turn
+
+7. Turn.rb
+    - cell_finder
+    - player_shot
+    - comp_shot
+    - player_feedback
+    - cpu_feedback
+    - board_output

@@ -99,8 +99,9 @@ class Computer
             end
         end
         final_comp_coord.flatten
+  
     end
-      
+  
     def increase_ship_sunk
       @ships_sunk += 1
     end

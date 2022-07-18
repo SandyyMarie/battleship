@@ -36,13 +36,13 @@ class GameManager
         if @player.board.valid_placement?(@player.cruiser, cru_placement_input)
             @player.board.place(@player.cruiser, cru_placement_input)
             print @player.board.render(true)         #print current player board with cruiser
-        else #if not valid placement THIS LOOP RUNS FOREVER
+        else 
             validity = false
-        while validity != true
-            puts "Those are invalid coordinates. Please try again:"
-            cru_placement_input = STDIN.gets.chomp.upcase.split
-            validity = @player.board.valid_placement?(@player.cruiser, cru_placement_input)
-        end
+            while validity != true
+                puts "Those are invalid coordinates. Please try again:"
+                cru_placement_input = STDIN.gets.chomp.upcase.split
+                validity = @player.board.valid_placement?(@player.cruiser, cru_placement_input)
+            end
             @player.board.place(@player.cruiser, cru_placement_input)
             print @player.board.render(true)
         end
