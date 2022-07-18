@@ -20,10 +20,10 @@ TESTS TO ADD
 2. Cell.rb
 
 3. Computer.rb
-    - initialize
-    - starting_board
-    - comp_place
-    - increase_ship_sunk
+    - initialize X
+    - starting_board?
+    - comp_place?
+    - increase_ship_sunk X
 
 4. Player.rb
     - inititalize
