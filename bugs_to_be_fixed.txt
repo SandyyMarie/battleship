@@ -16,12 +16,13 @@ need to have it execute either on same turn or before next turn
 TESTS TO ADD
 
 1. Board.rb
+Refactor notes(Stephen) in def valid_coordinate? - we could shorten cell block to @cells.has_key?(coord)
 
 2. Cell.rb
 
 3. Computer.rb
     - starting_board
-    - comp_place
+    - comp_place x
 
 4. Player.rb
 
@@ -34,9 +35,14 @@ TESTS TO ADD
     - end_game
     - turn
 
-7. Turn.rb
+    refactor notes(Stephen) - remove stdin?
 
-    Refactor notes:
+7. Turn.rb
+refactor notes(Stephen)
+remove STDINs?
+
+    Refactor notes(Sandy):
 
     In turn.rb we can remove the comp_board 
     and player_board variables alltogether by just calling computer.board and player.board
+

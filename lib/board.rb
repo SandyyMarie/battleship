@@ -23,13 +23,13 @@ class Board
     end
 
     def valid_coordinate?(coord)
-        @cells.any? {|cell| cell.include?(coord)}
+        @cells.has_key?(coord)   
     end
 
     def is_occupied?(coordinates)
-        #  coordinates.one? {|coord| !@cells[coord].empty?}
+        ####  coordinates.one? {|coord| !@cells[coord].empty?}
         status = false
-        # require 'pry' ; binding.pry
+  
         coordinates.each do |coord|
             if !@cells[coord].empty?
                 status = true

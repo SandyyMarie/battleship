@@ -7,7 +7,7 @@ class Turn
    
     @comp_board = @computer.board
     @player_board = @player.board
-    @money_shot = []
+    @money_shot = [] #Stephen - we can rename this
   end
 
   def cell_finder(comp_choice)
