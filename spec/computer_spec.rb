@@ -17,9 +17,10 @@ describe Computer do
 
     it 'computer starting board places a ship and cruiser to start' do
         computer = Computer.new
+        allow(computer).to receive(:comp_place).and_return(["A1", "A2"], ["B1", "B2", "B3"])
         computer.starting_board(reveal = false)
-        require 'pry'; binding.pry
-        # expect(computer.board.cells.find_all {|cell| cell.ship == "Cruiser"}.count).to eq(3)
+        
+        expect(computer.board.render(true)).to eq("  1 2 3 4\nA S S . .\nB S S S .\nC . . . .\nD . . . .\n")
     end
 
     it 'computer can place a ship on random coordinates' do

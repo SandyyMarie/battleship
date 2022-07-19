@@ -29,11 +29,6 @@ TESTS TO ADD
 
 5. Ship.rb
 
-6. Game_Manager.rb
-    - welcome_message
-    - end_game
-    - turn
-
 
 
 7. Turn.rb
