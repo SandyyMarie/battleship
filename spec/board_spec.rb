@@ -23,6 +23,7 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
         board.place(cruiser, ["A1", "A2", "A3"])    
         expect(board.is_occupied?(["A1"])).to eq(true)
+        
     end
 
     it 'vertical_check - check if given coordinates are vertical' do
@@ -37,7 +38,7 @@ RSpec.describe Board do
 
     it 'diagonal_check - check if given coordinates are diagonal' do
         expect(board.diagonal_check(["A1", "A2"])).to eq(false)
-        epxect(board.diagonal_check(["A1", "B2"])).to eq(true)
+        expect(board.diagonal_check(["A1", "B2"])).to eq(true)
     end
         
 

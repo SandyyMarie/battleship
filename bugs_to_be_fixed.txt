@@ -17,26 +17,31 @@ TESTS TO ADD
 
 1. Board.rb
 
+
 2. Cell.rb
 
 3. Computer.rb
     - starting_board
-    - comp_place
+    - comp_place x
 
 4. Player.rb
 
 
 5. Ship.rb
-    - render x (removed render from ship, it's in cell)
 
 6. Game_Manager.rb
     - welcome_message
     - end_game
     - turn
 
-7. Turn.rb
 
-    Refactor notes:
+
+7. Turn.rb
+refactor notes(Stephen)
+remove STDINs?
+
+    Refactor notes(Sandy):
 
     In turn.rb we can remove the comp_board 
     and player_board variables alltogether by just calling computer.board and player.board
+

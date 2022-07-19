@@ -26,21 +26,21 @@ class GameManager
 
 
     def setup 
-        @computer.starting_board #initializes computer board + places
+        @computer.starting_board 
         puts "You now need to lay out your two ships."
         puts "The Cruiser is three units long and the Submarine is two units long."
 
         print @player.board.render
         puts "Enter the squares for the Cruiser (3 spaces):"
-        cru_placement_input = gets.chomp.upcase.split #STDIN? #if valid placement, place cruiser
+        cru_placement_input = gets.chomp.upcase.split 
         if @player.board.valid_placement?(@player.cruiser, cru_placement_input)
             @player.board.place(@player.cruiser, cru_placement_input)
-            print @player.board.render(true)         #print current player board with cruiser
+            print @player.board.render(true)         
         else 
             validity = false
             while validity != true
                 puts "Those are invalid coordinates. Please try again:"
-                cru_placement_input = STDIN.gets.chomp.upcase.split
+                cru_placement_input = gets.chomp.upcase.split
                 validity = @player.board.valid_placement?(@player.cruiser, cru_placement_input)
             end
             @player.board.place(@player.cruiser, cru_placement_input)
@@ -48,7 +48,7 @@ class GameManager
         end
 
         puts "Enter the squares for the Submarine (2 spaces):"
-        sub_placement_input = STDIN.gets.chomp.upcase.split
+        sub_placement_input = gets.chomp.upcase.split
         if @player.board.valid_placement?(@player.submarine, sub_placement_input)
             @player.board.place(@player.submarine, sub_placement_input)
             print @player.board.render(true)
@@ -56,7 +56,7 @@ class GameManager
             validity = false
         while validity != true
             puts "Those are invalid coordinates. Please try again:"
-            sub_placement_input = STDIN.gets.chomp.upcase.split
+            sub_placement_input = gets.chomp.upcase.split
             validity = @player.board.valid_placement?(@player.submarine, sub_placement_input)
         end
             @player.board.place(@player.submarine, sub_placement_input)
@@ -66,12 +66,10 @@ class GameManager
 
 
     def end_game
-        if @player.ships[0].sunk? == true && @player.ships[1].sunk? == true
-            #if @player.ships.sunk? == 2
+        if @player.ships_sunk == 2
           puts "Aww the Computer Wins!"
           exit(true)
-        elsif @computer.ships[0].sunk? && @computer.ships[1].sunk?
-            #elsif @player.ships.sunk? == 2
+        elsif @computer.ships_sunk == 2
           puts "Yay You Win!"
           exit(true)
         end
