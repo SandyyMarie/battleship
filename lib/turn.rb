@@ -7,18 +7,18 @@ class Turn
    
     @comp_board = @computer.board
     @player_board = @player.board
-    @money_shot = [] #Stephen - we can rename this
+    @final_shot = [] 
   end
 
   def cell_finder(comp_choice)
     @comp_board.cells[comp_choice]
   end
 
-  def player_shot(given_coord) #move to player?
+  def player_shot(given_coord) 
     target_cell = cell_finder(given_coord)
     if @comp_board.valid_coordinate?(given_coord) && target_cell.fired_upon? == false
       target_cell.fire_upon
-      @money_shot = given_coord
+      @final_shot = given_coord
     else
       if @comp_board.valid_coordinate?(given_coord) && target_cell.fired_upon? == true
        puts "You already shot here."
@@ -31,13 +31,11 @@ class Turn
         valid = @comp_board.valid_coordinate?(given_coord)
         if valid = true
           target_cell = cell_finder(given_coord)
-          # require "pry"; binding.pry
           target_cell.fire_upon
-          @money_shot = given_coord
+          @final_shot = given_coord
         end
       end
     end
-    # valid
   end
 
   def comp_shot
@@ -65,10 +63,9 @@ class Turn
     curr_cell = @comp_board.cells[player_shot]
     play_status = ""
     all_sunk = false
-# require "pry"; binding.pry
     if curr_cell.fired_upon? && !curr_cell.empty?
       play_status = "hit"
-    else #if curr_cell.fired_upon? == false && curr_cell.empty? == true
+    else 
       play_status = "miss"
     end
 
@@ -79,13 +76,6 @@ class Turn
           @computer.increase_ship_sunk
           puts "My #{curr_cell.ship.name} has been sunk"
         end
-      end
-
-
-      if @player.ships_sunk == 2  #may not need, review later
-        all_sunk = true
-        puts "Aww the Computer Wins!"
-        puts "Game Over!"
       end
     end
     all_sunk
@@ -113,12 +103,6 @@ class Turn
           puts "Your #{comp_shot.ship.name} has been sunk"
         end
       end
-
-      if @computer.ships_sunk == 2 #may not need, review later
-        all_sunk = true
-        puts "Yay You Win!"
-        puts "Game Over!"
-      end
     end
     all_sunk
   end
@@ -144,12 +128,12 @@ class Turn
     print @player_board.render(true)
 
     puts "Enter the coordinate for your shot:"
-    given_coord = STDIN.gets.chomp.upcase
+    given_coord = gets.chomp.upcase
 
     player_shot(given_coord)
     comp_choice = comp_shot 
 
-    if cpu_feedback(comp_choice) == true || player_feedback(@money_shot) == true
+    if cpu_feedback(comp_choice) == true || player_feedback(@final_shot) == true
       return true
     end
   end

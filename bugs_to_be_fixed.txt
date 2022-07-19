@@ -16,7 +16,7 @@ need to have it execute either on same turn or before next turn
 TESTS TO ADD
 
 1. Board.rb
-Refactor notes(Stephen) in def valid_coordinate? - we could shorten cell block to @cells.has_key?(coord)
+
 
 2. Cell.rb
 
@@ -28,14 +28,13 @@ Refactor notes(Stephen) in def valid_coordinate? - we could shorten cell block t
 
 
 5. Ship.rb
-    - render x (removed render from ship, it's in cell)
 
 6. Game_Manager.rb
     - welcome_message
     - end_game
     - turn
 
-    refactor notes(Stephen) - remove stdin?
+
 
 7. Turn.rb
 refactor notes(Stephen)
