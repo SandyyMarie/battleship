@@ -18,8 +18,8 @@ describe Computer do
     it 'computer starting board places a ship and cruiser to start' do
         computer = Computer.new
         computer.starting_board(reveal = false)
-require 'pry'; binding.pry
-        # expect(computer.board.cells find_all 
+        require 'pry'; binding.pry
+        # expect(computer.board.cells.find_all {|cell| cell.ship == "Cruiser"}.count).to eq(3)
     end
 
     it 'computer can place a ship on random coordinates' do

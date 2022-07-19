@@ -29,7 +29,7 @@ class Turn
         given_coord = gets.chomp.upcase 
 
         valid = @comp_board.valid_coordinate?(given_coord)
-        if valid = true
+        if valid == true
           target_cell = cell_finder(given_coord)
           target_cell.fire_upon
           @final_shot = given_coord
