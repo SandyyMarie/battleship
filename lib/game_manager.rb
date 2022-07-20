@@ -10,8 +10,8 @@ class GameManager
 
 
     def welcome_message
-        p "Welcome to BATTLESHIP"
-        p "Enter p to play. Enter q to quit."
+        puts "Welcome to BATTLESHIP"
+        puts "Enter p to play. Enter q to quit."
         input = gets.chomp
     if input == "p"
         return "p"
