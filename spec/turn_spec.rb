@@ -36,21 +36,21 @@ before :each do
     end
 
     it 'can return the miss status of the players targeted cell' do
-        expect(@turn.player_feedback("A3")).to eq(false) #false to indiciate it is not end of game
+        expect(@turn.player_feedback("A3")).to eq(false)
         #also outputs "Your shot on A3 was a miss"
     end
 
     it 'can return the hit status of the players targeted cell' do
          @computer.board.place(@computer.cruiser, ["A1", "A2", "A3"])
          @turn.player_shot("A3")
-         expect(@turn.player_feedback("A3")).to eq(false) #false to indiciate it is not end of game
+         expect(@turn.player_feedback("A3")).to eq(false) 
          #also outputs "Your shot on A3 was a hit"
     end
 
     it 'can return the miss status of the computers targeted cell' do
         cpu_shot = @turn.cell_finder("A3")
         cpu_shot.fire_upon
-        expect(@turn.cpu_feedback(cpu_shot)).to eq(false) #false to indiciate it is not end of game
+        expect(@turn.cpu_feedback(cpu_shot)).to eq(false) 
         #also outputs "My shot on A3 was a miss"
     end
 

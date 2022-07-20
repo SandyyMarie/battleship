@@ -27,7 +27,6 @@ class Board
     end
 
     def is_occupied?(coordinates)
-        ####  coordinates.one? {|coord| !@cells[coord].empty?}
         status = false
   
         coordinates.each do |coord|

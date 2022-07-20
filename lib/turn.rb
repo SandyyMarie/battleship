@@ -122,7 +122,7 @@ class Turn
     end
 
     puts "=============COMPUTER BOARD============="
-    print @comp_board.render(true) #added true for debugging, remove before submitting
+    print @comp_board.render 
 
     puts "==============PLAYER BOARD=============="
     print @player_board.render(true)
